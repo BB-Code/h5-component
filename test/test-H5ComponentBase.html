@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开发测试H5ComponentBase 对象 (基本图文组件))</title>
+</head>
+<link rel="stylesheet" href="../css/H5ComponentBase.css">
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-size: 14px;
+    }
+    .iphone6{
+        width:375px;
+        height: 667px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        top:50%;
+        margin: -333px 0 0 -187px;
+
+    }
+</style>
+<body>
+<div class="iphone6"></div>
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/H5ComponentBase.js"></script>
+<script>
+    var  config = {
+        type:'base',
+        text:'文本',
+        width:720,
+        height:720,
+        bg:'./test.jpg',
+        css:{
+            left:50,
+            top:50
+        },
+        center:true
+    }
+  var h5 = new H5ComponentBase('iphone6',config);
+  $('.iphone6').append(h5);
+</script>
+</body>
+</html>
