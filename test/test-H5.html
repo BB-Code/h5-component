@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>H5</title>
+    <link rel="stylesheet" href="../css/H5.css">
+    <link rel="stylesheet" href="../css/H5ComponentBase.css">
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/jquery.fullPage.min.js"></script>
+    <script src="../js/H5.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <script>
+        $(function () {
+            var h5 = new H5();
+            h5
+                .addPage('face')
+                .addComponent('logo', {
+                    text: 'logo',
+                    width: 400,
+                    height: 100,
+                    css: {
+                        backgroundColor: 'pink',
+                        top: 200,
+                        opacity: 0
+                    },
+                    center: true,
+                    animateIn: {
+                        opacity: 1
+                    },
+                    animateOut: {
+                        opacity: 0
+                    },
+                })
+                .addComponent('slogan', {
+                    text: 'slogan',
+                    width: 350,
+                    height: 100,
+                    css: {
+                        backgroundColor: 'blue',
+                        top: 350
+                    },
+                    center: true,
+                })
+                .addPage('desc')
+                .addComponent('caption', {
+                    text: '核心理念',
+                    width: 400,
+                    height: 100,
+                    css: {
+                        backgroundColor: 'yellow',
+                        top: 200
+                    },
+                    center: true,
+                })
+                .addPage('page-3')
+                .addComponent('caption', {
+                    text: '课程方向分布',
+                    width: 400,
+                    height: 100,
+                    css: {
+                        backgroundColor: 'red',
+                        top: 200
+                    },
+                    center: true,
+                })
+                .loader(); //可以扩张后面多资源的情况
+        });
+    </script>
+</body>
+
+</html>
