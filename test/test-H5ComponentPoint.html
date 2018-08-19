@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>散点图</title>
+</head>
+<link rel="stylesheet" href="../css/H5ComponentBase.css">
+<link rel="stylesheet" href="../css/H5ComponentPoint.css">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-size: 14px;
+    }
+
+    .iphone6 {
+        width: 375px;
+        height: 667px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -333px 0 0 -187px;
+
+    }
+</style>
+
+<body>
+    <div class="iphone6"></div>
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <script src="../js/H5ComponentPoint.js"></script>
+    <script>
+        var config = {
+            type: 'point',
+            width: 300,
+            height: 300,
+            data: [
+                ['A项', .4, 'red'],
+                ['B项', .2, 'yellow', 0, '-60%'],
+                ['C项', .1, 'blue', 0, '120%'],
+            ],
+            css: {
+                top: 150,
+                opacity: 0
+            },
+            animateIn: {
+                top: 150,
+                opacity: 1
+            },
+            animateOut: {
+                top: 0,
+                opacity: 0
+            },
+            center: true
+        }
+        var point = new H5ComponentPoint('Point', config);
+        $('.iphone6').append(point);
+
+        var show = true;
+        $('body').click(function () {
+            show = !show;
+            $('.h5_component').trigger(show ? 'onLeave' : 'afterLoad')
+        });
+    </script>
+</body>
+
+</html>
