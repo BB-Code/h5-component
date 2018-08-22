@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饼图</title>
+</head>
+<link rel="stylesheet" href="../css/H5ComponentBase.css">
+<link rel="stylesheet" href="../css/H5ComponentPie.css">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-size: 14px;
+    }
+
+    .iphone6 {
+        width: 375px;
+        height: 667px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -333px 0 0 -187px;
+
+    }
+</style>
+
+<body>
+    <div class="iphone6"></div>
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/H5ComponentBase.js"></script>
+    <script src="../js/H5ComponentPie.js"></script>
+    <script>
+        var config = {
+            type: 'pie',
+            width: 400,
+            height: 400,
+            data: [
+                ['Javascript', .4, 'pink'],
+                ['PHP', .2,],
+                ['Python', .2, ],
+                ['Java', .1, ],
+                ['C#', .1, ],
+            ],
+            css: {
+                top:100,
+                opacity: 0
+            },
+            animateIn: {top: 200,opacity: 1},
+            animateOut: {top: 100,opacity: 0},
+
+            center: true
+        }
+        var pie = new H5ComponentPie('pie', config);
+        $('.iphone6').append(pie);
+
+        var show = true;
+        $('body').click(function () {
+            show = !show;
+            $('.h5_component').trigger(show ? 'onLeave' : 'afterLoad')
+        });
+    </script>
+</body>
+
+</html>
