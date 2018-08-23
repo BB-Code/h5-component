@@ -17,12 +17,17 @@ var H5ComponentBase = function (name, config) {
         });
     }
     component.on('onLeave', function () {
-        component.addClass(cls + '_leave').removeClass(cls + '_load');
-        config.animateOut && component.animate(config.animateOut);
+        setTimeout(() => {
+            component.addClass(cls + '_leave').removeClass(cls + '_load');
+            config.animateOut && component.animate(config.animateOut);
+        }, config.delay || 0);
+
         return false;
     });
     component.on('afterLoad', function () {
-        component.addClass(cls + '_load').removeClass(cls + '_leave');
+        setTimeout(() => {
+            component.addClass(cls + '_load').removeClass(cls + '_leave');
+        }, config.delay || 0);
         config.animateIn && component.animate(config.animateIn);
         return false;
     });
