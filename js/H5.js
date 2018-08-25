@@ -26,24 +26,31 @@ var H5 = function () {
             case 'base':
                 component = new H5ComponentBase(name, config);
                 break;
+            case 'caption':
+                component = new H5ComponentBase(name, config);
+                break;
             default:
                 break;
         }
         page.append(component);
         return this;
     };
-    this.loader = function () {
+    this.loader = function (firstPage) {
         this.el.fullpage({
             onLeave: function (index, nextIndex, direction) {
+                
                 $(this).find('.h5_component').trigger('onLeave');
             },
             afterLoad: function (anchorLink, index) {
+                console.log($(this).find('.h5_component').trigger('afterLoad'))
                 $(this).find('.h5_component').trigger('afterLoad');
             }
         });
         this.page[0].find('.h5_component').trigger('afterLoad');
         this.el.show();
-
+        if (firstPage){
+            $.fn.fullpage.moveTo(firstPage);
+        }
     };
     return this;
 }
