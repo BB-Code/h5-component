@@ -90,7 +90,7 @@ var draw = function (per) {
         ctx.stroke();
         
     }
-    component.on('afterLoad', function () {
+    component.on('onLoad', function () {
         var  s = 0;
         for(i=0;i<100;i++){
             setTimeout(() => {

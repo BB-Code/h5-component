@@ -100,7 +100,7 @@ var H5ComponentRadar = function (name, config) {
             ctx.closePath();
         }
     }
-    component.on('afterLoad', function () {
+    component.on('onLoad', function () {
         var s = 0;
         for (i = 0; i < 100; i++) {
             setTimeout(() => {

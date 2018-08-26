@@ -55,23 +55,25 @@
                 $('#h5').find('.page').eq(index - 1).trigger('onLeave');
             },
             afterLoad: function (anchorLink, index) {
-                $('#h5').find('.page').eq(index - 1).trigger('afterLoad');
+                $('#h5').find('.page').eq(index - 1).trigger('onLoad');
             }
         });
 
         $('.page').on('onLeave', function () {
             console.log($(this).attr('id'), '===>', 'onLeave');
-            $(this).find('.component').trigger('onHide');
+            $(this).find('.component').trigger('onLeave');
         });
-        $('.page').on('afterLoad', function () {
-            console.log($(this).attr('id'), '===>', 'afterLoad');
-            $(this).find('.component').trigger('onShow');
+        $('.page').on('onLoad', function () {
+            console.log($(this).attr('id'), '===>', 'onLoad');
+            $(this).find('.component').trigger('onLoad');
         });
-        $('.component').on('onShow', function () {
+        $('.component').on('onLoad', function () {
             $(this).fadeIn();
+            return false;
         });
-        $('.component').on('onHide', function () {
+        $('.component').on('onLeave', function () {
             $(this).fadeOut();
+            return false;
         });
     });
 </script>

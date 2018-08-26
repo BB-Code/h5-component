@@ -55,8 +55,8 @@ var H5ComponentPie = function (name, config) {
         per.text(config.data[i][1]*100+"%");
         text.append(per);
 
-        var x = r + Math.sin(.7* Math.PI - sAngle) * r;
-        var y = r + Math.cos(.7* Math.PI - sAngle) * r;
+        var x = r + Math.sin(.6* Math.PI - sAngle) * r;
+        var y = r + Math.cos(.6* Math.PI - sAngle) * r;
 
         if (w > x / 2) {
             text.css('left', x / 2);
@@ -112,7 +112,7 @@ var H5ComponentPie = function (name, config) {
         
     }
 
-    component.on('afterLoad', function () {
+    component.on('onLoad', function () {
         var s = 0;
         for (i = 0; i < 100; i++) {
             setTimeout(() => {

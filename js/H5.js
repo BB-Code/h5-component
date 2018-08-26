@@ -13,6 +13,9 @@ var H5 = function () {
         }
         this.el.append(page);
         this.page.push(page);
+        if (typeof this.whenAddPage === 'function') {
+            this.whenAddPage();
+        }
         return this;
     };
     this.addComponent = function (name, config) {
@@ -26,11 +29,29 @@ var H5 = function () {
             case 'base':
                 component = new H5ComponentBase(name, config);
                 break;
-            case 'caption':
-                component = new H5ComponentBase(name, config);
+            case 'polyline':
+                component = new H5ComponentPolyline(name, config);
+                break;
+            case 'pie':
+                component = new H5ComponentPie(name, config);
+                break;
+            case 'bar':
+                component = new H5ComponentBar(name, config);
+                break;
+            case 'bar_v':
+                component = new H5ComponentBar_v(name, config);
+                break;
+            case 'radar':
+                component = new H5ComponentRadar(name, config);
+                break;
+            case 'ring':
+                component = new H5ComponentRing(name, config);
+                break;
+            case 'point':
+                component = new H5ComponentPoint(name, config);
                 break;
             default:
-                break;
+                ;
         }
         page.append(component);
         return this;
@@ -38,17 +59,15 @@ var H5 = function () {
     this.loader = function (firstPage) {
         this.el.fullpage({
             onLeave: function (index, nextIndex, direction) {
-                
                 $(this).find('.h5_component').trigger('onLeave');
             },
             afterLoad: function (anchorLink, index) {
-                console.log($(this).find('.h5_component').trigger('afterLoad'))
-                $(this).find('.h5_component').trigger('afterLoad');
+                $(this).find('.h5_component').trigger('onLoad');
             }
         });
-        this.page[0].find('.h5_component').trigger('afterLoad');
+        this.page[0].find('.h5_component').trigger('onLoad');
         this.el.show();
-        if (firstPage){
+        if (firstPage) {
             $.fn.fullpage.moveTo(firstPage);
         }
     };

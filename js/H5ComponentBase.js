@@ -16,16 +16,19 @@ var H5ComponentBase = function (name, config) {
             left: '50%'
         });
     }
+    if(typeof config.click === 'function'){
+        component.on('click',config.click);
+    }
     component.on('onLeave', function () {
-        setTimeout(() => {
+        setTimeout(function () {
             component.addClass(cls + '_leave').removeClass(cls + '_load');
             config.animateOut && component.animate(config.animateOut);
         }, config.delay || 0);
 
         return false;
     });
-    component.on('afterLoad', function () {
-        setTimeout(() => {
+    component.on('onLoad', function () {
+        setTimeout(function () {
             component.addClass(cls + '_load').removeClass(cls + '_leave');
         }, config.delay || 0);
         config.animateIn && component.animate(config.animateIn);

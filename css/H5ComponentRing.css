@@ -21,4 +21,6 @@
     opacity: 0;
 }
 
-.h5_component_ring .text .per {}
+.h5_component_ring .text .per {
+    font-size:12px;
+}
